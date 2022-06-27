@@ -22,9 +22,13 @@ keys.addEventListener('click', e => {
     
     if (!action) {
         console.log('number key!')
+        if (!displayedNum.includes('.')) {
+          display.textContent = displayedNum + '.'
+        }
         if (displayedNum === '0' || previousKeyType === 'operator') {
             display.textContent = keyContent
-          } else {
+          } 
+         else {
             display.textContent = displayedNum + keyContent
           }
         }
@@ -53,6 +57,11 @@ keys.addEventListener('click', e => {
       
       if (action === 'decimal') {
         console.log('decimal key!')
+        if (!displayedNum.includes('.')) {
+    display.textContent = displayedNum + '.'
+  } else if (previousKeyType === 'operator') {
+    display.textContent = '0.'
+  }
         display.textContent = displayedNum + '.'
       }
       
