@@ -1,6 +1,6 @@
 # calculator-app
 
-Exercise JS /HTML / CSS by clonning Iphone cauculator
+Exercise JS /HTML / CSS by clonning Iphone calculator
 
 ![calculator](images/readme/calculator.png)
-![calculator](images/readme/calculator2.png)
+![calculator2](images/readme/calculator2.png)
