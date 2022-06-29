@@ -15,19 +15,24 @@ keys.addEventListener('click', e => {
     const displayedNum = display.textContent // numero que está no display
     const previousKeyType = calculator.dataset.previousKeyType // numero anterior
 
-     　// Remove a classe .is-depressed de todas as teclas
-    　　Array.from(key.parentNode.children)
-    　　.forEach(k => k.classList.remove('is-depressed'))
+       // Remove a classe .is-depressed de todas as teclas
+        Array.from(key.parentNode.children)
+        .forEach(k => k.classList.remove('is-depressed'))
     
     //  number keys
     if (!action) {
-      if (
+      
+      if (displayedNum === '-0'){
+        display.textContent = keyContent * (-1)
+      }
+      else if(
         displayedNum === '0' ||
         previousKeyType === 'operator' ||
         previousKeyType === 'calculate'
       ) {
         display.textContent = keyContent
-      } else {
+      } 
+      else {
         display.textContent = displayedNum + keyContent
       }
       calculator.dataset.previousKeyType = 'number'
@@ -129,6 +134,15 @@ keys.addEventListener('click', e => {
 
         if (action === 'negative') {
           console.log('negative key!')
+        
+          
+          
+          if(previousKeyType === 'operator'){
+            display.textContent = "-" + 0
+          }else{
+            display.textContent  = displayedNum * (-1)
+          }
+
           calculator.dataset.previousKeyType = 'negative'
         }
   
@@ -142,6 +156,16 @@ keys.addEventListener('click', e => {
  }
 })
 
+const calculate = (n1, operator, n2) => {
+  const firstNum = parseFloat(n1)
+  const secondNum = parseFloat(n2)
+  if (operator === 'add') return firstNum + secondNum
+  if (operator === 'subtract') return firstNum - secondNum
+  if (operator === 'multiply') return firstNum * secondNum
+  if (operator === 'divide') return firstNum / secondNum
+}
+
+/*  este bloco foi refatorado
 const calculate = (n1, operator, n2) => {
     let result = ''
     
@@ -157,4 +181,4 @@ const calculate = (n1, operator, n2) => {
     
     return result
   }
-
+*/
